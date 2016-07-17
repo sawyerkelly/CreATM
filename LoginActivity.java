@@ -64,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private TextView mCreateAccountView;
+    private TextView mForgotPassword;
+    private TextView mForgotEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+        //Link to create account activity
+        mCreateAccountView = (TextView) findViewById(R.id.create_account_link);
+        mCreateAccountView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(LoginActivity.this,CreateAccountActivity.class);
+                LoginActivity.this.startActivity(myIntent);
+            }
+        });
+
+        //Link to forgot password activity
+        mCreateAccountView = (TextView) findViewById(R.id.forgot_password);
+        mCreateAccountView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+                LoginActivity.this.startActivity(myIntent);
+            }
+        });
+
+        //Link to forgot email activity
+        mCreateAccountView = (TextView) findViewById(R.id.forgot_email);
+        mCreateAccountView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(LoginActivity.this,ForgotEmailActivity.class);
+                LoginActivity.this.startActivity(myIntent);
+            }
+        });
 
 
     }
@@ -350,6 +381,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             // TODO: change the PostLoginActivity to main activity
+            // TODO: pass along info for personalizing main page
             //If succesful, redirect to "PostLoginActivity"
             if (success) {
                 finish();
